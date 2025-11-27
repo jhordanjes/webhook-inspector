@@ -8,5 +8,5 @@ export default defineConfig({
   },
   out: './src/db/migrations',
   schema: './src/db/schema/index.ts',
-  casing: 'snake_case'
+  casing: 'snake_case',
 })

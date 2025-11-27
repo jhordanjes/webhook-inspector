@@ -9,6 +9,10 @@ import {
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
 import { env } from './env'
+import { captureWebhook } from './routes/capture-webhook'
+import { deleteWebhook } from './routes/delete-webhook'
+import { generateHandler } from './routes/generate-handler'
+import { getWebhook } from './routes/get-webhook'
 import { listWebhooks } from './routes/list-webhooks'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
@@ -38,6 +42,10 @@ app.register(ScalarApiReference, {
 })
 
 app.register(listWebhooks)
+app.register(getWebhook)
+app.register(deleteWebhook)
+app.register(captureWebhook)
+app.register(generateHandler)
 
 app.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
   console.log('HTTP server running on http://localhost:3333')
